@@ -14,16 +14,15 @@ from Youtube.forcesub import handle_force_subscribe
 
 #########################
 
-# Calculate current time greeting
-currentTime = datetime.datetime.now()
-if currentTime.hour < 12:
-    wish = "Good morning 🌞"
-elif 12 <= currentTime.hour < 18:
-    wish = "Good afternoon 🌤️"
-else:
-    wish = "Good evening 🌝"
 
-
+def current_wish():
+    """Salutation calculée à chaque message (et non au démarrage du bot)."""
+    current_time = datetime.datetime.now()
+    if current_time.hour < 12:
+        return "Good morning 🌞"
+    if 12 <= current_time.hour < 18:
+        return "Good afternoon 🌤️"
+    return "Good evening 🌝"
 
 
 ########################🎊 Lisa | NT BOTS 🎊######################################################
@@ -57,7 +56,7 @@ async def start(client, message):
         return
     #user = message.from_user
     await message.reply_text(
-        text=Translation.START_TEXT.format(message.from_user.first_name, wish),
+        text=Translation.START_TEXT.format(message.from_user.first_name, current_wish()),
         reply_markup=InlineKeyboardMarkup(
         [
             [
@@ -74,8 +73,12 @@ async def start(client, message):
     ))
 
 # Help command handler
-@Client.on_message(filters.command("help"))
+@Client.on_message(filters.private & filters.command("help"))
 async def help(client, message):
+    if Config.CHANNEL:
+        fsub = await handle_force_subscribe(client, message)
+        if fsub == 400:
+            return
     help_text = """
 Welcome to the YouTube Video Uploader Bot!
 

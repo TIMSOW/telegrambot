@@ -1,0 +1,36 @@
+# Environnements virtuels
+.venv/
+venv/
+env/
+ENV/
+
+# Secrets
+.env
+cookies.txt
+
+# Sessions Pyrogram (ne doivent jamais être publiées)
+*.session
+*.session-journal
+my_bot.session*
+
+# Fichiers téléchargés / temporaires
+downloads/
+bin/
+*.jpg
+*.mp4
+*.mp3
+*.mkv
+*.webm
+*.part
+*.ytdl
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.mypy_cache/
+.pytest_cache/
+
+# Divers
+__pypackages__/
+.DS_Store

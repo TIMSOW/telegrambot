@@ -1,6 +1,60 @@
 #### YouTube Video Download Bot V3
 ###### This A simple YouTube Video Download Telegram Bot
 
+## 🚀 Démarrage rapide (français)
+
+### 1. Prérequis
+- **Python 3.11+**
+- **ffmpeg** → `sudo apt install -y ffmpeg` (Debian/Ubuntu) ou `brew install ffmpeg` (macOS)
+- **deno** (recommandé, requis par yt-dlp pour YouTube) →
+  `curl -fsSL https://deno.land/install.sh | sh`
+
+### 2. Installation
+```bash
+git clone https://github.com/TIMSOW/telegrambot.git
+cd telegrambot
+python3 -m venv .venv
+source .venv/bin/activate          # Windows : .venv\Scripts\activate
+pip install -r requirements.txt
+```
+
+### 3. Configuration (obligatoire)
+Récupère `API_ID` / `API_HASH` sur <https://my.telegram.org> (« API development tools »)
+et le `BOT_TOKEN` auprès de [@BotFather](https://t.me/botfather), puis :
+
+```bash
+cp .env.example .env
+nano .env        # remplis BOT_TOKEN, API_ID, API_HASH
+```
+
+> ⚠️ Le fichier `.env` et `cookies.txt` sont ignorés par git : tes secrets ne partiront
+> jamais sur GitHub. Ne les colle pas non plus dans le code.
+
+### 4. Lancer le bot
+```bash
+./start.sh          # vérifie les prérequis puis démarre le bot
+# ou
+python3 bot.py
+```
+
+Tu dois voir `🎊 I AM ALIVE 🎊`. Ouvre Telegram, écris `/start` à ton bot,
+puis envoie un lien YouTube.
+
+### 5. Diagnostic (optionnel)
+```bash
+python3 app.py      # http://localhost:8080 → état de ffmpeg, deno, cookies, variables…
+```
+
+### Commandes utiles
+| Problème | Solution |
+|---|---|
+| `Configuration incomplète : BOT_TOKEN, API_ID, API_HASH` | remplis `.env` ou exporte les variables |
+| `ffmpeg est introuvable` | installe ffmpeg (`apt install ffmpeg`) |
+| `Aucun runtime JavaScript` | installe deno (`curl -fsSL https://deno.land/install.sh \| sh`) |
+| La vidéo ne se convertit pas en MP3 | ffmpeg manquant |
+| `ERROR: Unable to extract ...` | mets yt-dlp à jour : `pip install -U yt_dlp` |
+
+
 
 ![logo](https://graph.org/file/754b7faa1308a13fc917f.jpg)
 
