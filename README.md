@@ -1,6 +1,9 @@
 #### YouTube Video Download Bot V3
 ###### This A simple YouTube Video Download Telegram Bot
 
+> 🆕 **Débutant total ? Suis le [guide pas à pas](GUIDE-DEMARRAGE.md)** :
+> il part de la création du bot dans Telegram (BotFather) jusqu'à l'envoi de la première vidéo.
+
 ## 🚀 Démarrage rapide (français)
 
 ### 1. Prérequis
